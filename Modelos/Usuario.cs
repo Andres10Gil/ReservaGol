@@ -14,7 +14,7 @@ namespace ReservaGol.Modelos
 
         public string Correo { get; set; }
 
-        public int Telefono { get; set; }
+        public string Telefono { get; set; }
 
         public string Contraseña { get; set; }
 

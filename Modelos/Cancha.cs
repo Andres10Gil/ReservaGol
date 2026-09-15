@@ -15,6 +15,8 @@ namespace ReservaGol.Modelos
 
         public decimal Precio_Hora { get; set; }
 
+        public string ImagenUrl { get; set; }
+
         // Navegación
         public ICollection<Reserva> Reservas { get; set; }
     }

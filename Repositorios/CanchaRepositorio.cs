@@ -45,6 +45,7 @@ namespace ReservaGol.Repositorios
             existente.Ubicacion = cancha.Ubicacion;
             existente.Dimenciones = cancha.Dimenciones;
             existente.Precio_Hora = cancha.Precio_Hora;
+            existente.ImagenUrl = cancha.ImagenUrl;
             await _context.SaveChangesAsync();
             return true;
         }

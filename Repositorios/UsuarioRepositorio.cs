@@ -35,6 +35,32 @@ namespace ReservaGol.Repositorios
             return true;
         }
 
+        public async Task<bool> RegistrarUsuario(Usuario usuario)
+        {
+            var rolCliente = await _context.Roles.FirstOrDefaultAsync(r => r.Nombre_rol == "Cliente");
+            if (rolCliente == null)
+            {
+                rolCliente = new Roles
+                {
+                    Id_Roles = Guid.NewGuid(),
+                    Nombre_rol = "Cliente",
+                    Descripcion = "Usuario registrado desde el sitio público",
+                    Nivel_acceso = 1,
+                    Activo = true,
+                    Creando_em = DateTime.UtcNow,
+                };
+                _context.Roles.Add(rolCliente);
+            }
+
+            usuario.Id_Usuario = Guid.NewGuid();
+            usuario.Id_Roles = rolCliente.Id_Roles;
+            usuario.Contraseña = _passwordHasher.HashPassword(usuario.Contraseña);
+            usuario.Fecha_registro = DateTime.UtcNow;
+            _context.Usuarios.Add(usuario);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<bool> EliminarUsuarios(Guid id)
         {
             var existente = await _context.Usuarios.FirstOrDefaultAsync(x => x.Id_Usuario == id);

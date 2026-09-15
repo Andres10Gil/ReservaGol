@@ -37,6 +37,14 @@ namespace ReservaGol.Controladores
             return Ok(reserva);
         }
 
+        [HttpGet("ObtenerReservasPorCancha/{idCancha}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetReservasPorCancha(Guid idCancha)
+        {
+            var reservas = await _reservaRepositorio.ObtenerReservasPorCancha(idCancha);
+            return Ok(reservas);
+        }
+
         [HttpPost("CrearReserva")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

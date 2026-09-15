@@ -20,7 +20,8 @@ CREATE TABLE [dbo].[Canchas](
 	[Ubicacion] [nvarchar](250) NOT NULL,
 	[Dimenciones] [nvarchar](50) NOT NULL,
 	[Precio_Hora] [decimal](18, 0) NOT NULL,
- CONSTRAINT [PK_Canchas] PRIMARY KEY CLUSTERED 
+	[ImagenUrl] [nvarchar](500) NULL,
+ CONSTRAINT [PK_Canchas] PRIMARY KEY CLUSTERED
 (
 	[Id_Canchas] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -217,7 +218,7 @@ CREATE TABLE [dbo].[Usuarios](
 	[Id_Roles] [uniqueidentifier] NOT NULL,
 	[Nombre] [varchar](100) NOT NULL,
 	[Correo] [varchar](50) NOT NULL,
-	[Telefono] [int] NOT NULL,
+	[Telefono] [varchar](20) NOT NULL,
 	[Contraseña] [varchar](250) NOT NULL,
 	[Fecha_registro] [datetime] NOT NULL,
  CONSTRAINT [PK_Usuarios] PRIMARY KEY CLUSTERED 

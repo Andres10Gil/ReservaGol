@@ -28,6 +28,7 @@ namespace ReservaGol.context
                 e.HasKey(x => x.Id_Usuario);
                 e.Property(x => x.Nombre).IsRequired().HasMaxLength(100);
                 e.Property(x => x.Correo).IsRequired().HasMaxLength(50);
+                e.Property(x => x.Telefono).IsRequired().HasMaxLength(20);
                 e.Property(x => x.Contraseña).IsRequired().HasMaxLength(250);
                 e.Property(x => x.Fecha_registro).HasColumnName("Fecha_registro");
                 e.HasOne(x => x.Roles).WithMany(r => r.Usuarios).HasForeignKey(x => x.Id_Roles);
@@ -52,6 +53,7 @@ namespace ReservaGol.context
                 e.Property(x => x.Ubicacion).HasMaxLength(500);
                 e.Property(x => x.Dimenciones).HasMaxLength(100);
                 e.Property(x => x.Precio_Hora).HasColumnType("decimal(18,2)");
+                e.Property(x => x.ImagenUrl).HasMaxLength(500);
             });
 
             // Reserva

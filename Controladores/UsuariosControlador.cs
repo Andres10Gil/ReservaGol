@@ -48,6 +48,21 @@ namespace ReservaGol.Controladores
             return Ok("Usuario creado correctamente.");
         }
 
+        [HttpPost("Registro")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Registro([FromBody] Usuario usuario)
+        {
+            var existente = await _usuarioRepositorio.ObtenerUsuarioPorCorreo(usuario.Correo);
+            if (existente != null)
+                return BadRequest("Ya existe una cuenta con ese correo.");
+
+            var resultado = await _usuarioRepositorio.RegistrarUsuario(usuario);
+            if (!resultado)
+                return BadRequest("No se pudo completar el registro.");
+            return Ok("Registro exitoso.");
+        }
+
         [HttpDelete("EliminarUsuario/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -53,4 +53,17 @@ Middleware/           Manejo centralizado de errores
 Modelos/               Entidades de dominio / EF
 context/                DbContext de Entity Framework
 sql/                     Script de inicialización de la base de datos
+frontend/                SPA en React + Vite (login y CRUD de Usuarios/Roles/Canchas/Reservas)
 ```
+
+## Frontend
+
+El frontend (React + Vite) vive en [`frontend/`](frontend). Para levantarlo en desarrollo:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Por defecto apunta a `http://localhost:8080/api` (ver `frontend/.env`), que es donde queda expuesta la API al levantar los contenedores de Docker.
