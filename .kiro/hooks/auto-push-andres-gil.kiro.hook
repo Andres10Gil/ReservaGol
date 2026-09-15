@@ -1,0 +1,15 @@
+{
+  "enabled": false,
+  "name": "Auto Push AndresGil → main",
+  "description": "Cuando el agente termina, sube los cambios a la rama AndresGil y los mergea a main automáticamente",
+  "version": "1",
+  "when": {
+    "type": "agentStop"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "git add -A && git commit -m \"Auto-commit desde AndresGil\" --allow-empty && git push origin AndresGil && git checkout main && git merge AndresGil && git push origin main && git checkout AndresGil"
+  },
+  "workspaceFolderName": "ReservaGol",
+  "shortName": "auto-push-andres-gil"
+}

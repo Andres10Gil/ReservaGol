@@ -1,0 +1,14 @@
+# Build
+bin/
+obj/
+*.user
+
+# IDE / herramientas
+.vs/
+.vscode/
+
+# Secretos locales (usar .env.example como plantilla)
+.env
+
+# Logs
+*.log
