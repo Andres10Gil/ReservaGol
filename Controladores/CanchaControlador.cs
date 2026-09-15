@@ -60,6 +60,17 @@ namespace ReservaGol.Controladores
             return Ok("Cancha eliminada correctamente.");
         }
 
+        [HttpPut("ActualizarCancha")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> ActualizarCancha([FromBody] Cancha cancha)
+        {
+            var resultado = await _canchaRepositorio.ActualizarCancha(cancha);
+            if (!resultado)
+                return BadRequest("No se pudo actualizar la cancha.");
+            return Ok("Cancha actualizada correctamente.");
+        }
+
         [HttpGet("Estadisticas/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

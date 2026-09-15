@@ -36,5 +36,17 @@ namespace ReservaGol.Repositorios
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<bool> ActualizarCancha(Cancha cancha)
+        {
+            var existente = await _context.Canchas.FirstOrDefaultAsync(x => x.Id_Canchas == cancha.Id_Canchas);
+            if (existente == null) return false;
+            existente.Nombre = cancha.Nombre;
+            existente.Ubicacion = cancha.Ubicacion;
+            existente.Dimenciones = cancha.Dimenciones;
+            existente.Precio_Hora = cancha.Precio_Hora;
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

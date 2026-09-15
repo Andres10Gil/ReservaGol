@@ -8,5 +8,6 @@ namespace ReservaGol.Repositorios.Interfaces
         Task<Cancha> ObtenerCancha(Guid id);
         Task<bool> CrearCancha(Cancha cancha);
         Task<bool> EliminarCancha(Guid id);
+        Task<bool> ActualizarCancha(Cancha cancha);
     }
 }
